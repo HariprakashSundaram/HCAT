@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "HCAT Recorder",
+  "version": "0.7.4",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "description": "HCAT Recorder Local-only Chrome HTTP/S recorder with automatic parallel grouping, step transactions, domain/type filters, HAR export, and JMX export.",
+  "minimum_chrome_version": "110",
+  "permissions": [
+    "debugger",
+    "storage",
+    "activeTab",
+    "windows"
+  ],
+  "action": {
+    "default_title": "HCAT Recorder",
+    "default_popup": "popup.html",
+	"default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  }
+}

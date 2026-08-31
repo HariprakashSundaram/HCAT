@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>HCAT Recorder</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <div class="title">
+      <h1>HCAT Recorder</h1>
+      <p id="flowInfo">New recording</p>
+    </div>
+    <div class="headerActions">
+      <button id="openWindow" class="undock" title="Open recorder in a separate window">↗ Open Window</button>
+      <span id="status" class="badge idle">Idle</span>
+    </div>
+  </header>
+
+  <section class="toolbar">
+    <button id="start" class="primary">● Start</button>
+    <button id="pause" disabled>Ⅱ Pause</button>
+    <button id="stop" disabled>■ Stop</button>
+    <button id="newStep" disabled>＋ Step</button>
+    <button id="refresh">↻</button>
+  </section>
+
+  <section id="exportPanel" class="exportTop" hidden>
+    <input id="testPlanName" value="Chrome Recorded Test Plan" aria-label="Test plan name">
+    <button id="exportJmx" class="primary">Export JMX + HAR</button>
+    <button id="deleteSession" class="danger">Delete</button>
+  </section>
+
+  <section class="stepbar">
+    <div class="sectionLabel">Transactions</div>
+    <div id="steps"></div>
+  </section>
+
+  <section id="domainPanel" hidden>
+    <div class="sectionHead">
+      <span>Domains <small>(uncheck to exclude from JMX/HAR)</small></span>
+      <div>
+        <button id="selectAllDomains">All</button>
+        <button id="clearDomains">None</button>
+      </div>
+    </div>
+    <div id="domains"></div>
+  </section>
+
+  <section id="typePanel" hidden>
+    <div class="sectionHead">
+      <span>Types <small>(uncheck to exclude from JMX/HAR)</small></span>
+      <div>
+        <button id="selectAllTypes">All</button>
+        <button id="clearTypes">None</button>
+      </div>
+    </div>
+    <div id="types"></div>
+  </section>
+
+  <section class="settings">
+    <label><input type="checkbox" id="captureBodies"> Capture response bodies</label>
+    <label><input type="checkbox" id="maskSecrets" checked> Mask sensitive headers</label>
+    <label>Parallel gap <input id="overlapMs" type="number" min="0" step="10" value="25"> ms</label>
+    <select id="exportMode" title="JMX export mode">
+      <option value="blazemeter">BlazeMeter Parallel</option>
+      <option value="standard">Standard JMeter</option>
+    </select>
+  </section>
+
+  <section id="sessionPanel" hidden>
+    <div class="sectionHead">
+      <span>Requests <small id="count">(0)</small></span>
+      <span class="autoGroupState">Auto parallel: ON</span>
+    </div>
+    <div id="requests"></div>
+
+  </section>
+
+  <div id="message" class="message"></div>
+  <footer>Local only · no upload · Step = JMeter Transaction Controller</footer>
+  <script src="popup.js"></script>
+</body>
+</html>
